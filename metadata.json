@@ -1,0 +1,6 @@
+{
+  "name": "Cardapp",
+  "description": "Plataforma completa de catálogo online para lanchonetes, restaurantes e mercados com painel administrativo avançado.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

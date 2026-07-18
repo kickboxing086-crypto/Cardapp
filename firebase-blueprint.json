@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "StoreSettings": {
+      "title": "Store Settings",
+      "description": "Configuration for a store/tenant.",
+      "type": "object",
+      "properties": {
+        "storeName": { "type": "string", "maxLength": 100 },
+        "primaryColor": { "type": "string", "maxLength": 50 },
+        "whatsappNumber": { "type": "string", "maxLength": 50 },
+        "storeSlug": { "type": "string", "maxLength": 100 },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["storeName", "primaryColor", "storeSlug", "ownerId"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A product available in the store",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 150 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "price": { "type": "number" },
+        "unit": { "type": "string", "maxLength": 20 },
+        "image": { "type": "string", "maxLength": -1 },
+        "promotion": { "type": "boolean" },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["name", "price", "unit", "promotion", "ownerId"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order",
+      "type": "object",
+      "properties": {
+        "protocol": { "type": "string", "maxLength": 20 },
+        "customerName": { "type": "string", "maxLength": 150 },
+        "deliveryMethod": { "type": "string", "maxLength": 50 },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "observation": { "type": "string", "maxLength": 1000 },
+        "address": { "type": "string", "maxLength": 1000 },
+        "items": { "type": "array" },
+        "totalPrice": { "type": "number" },
+        "status": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "storeId": { "type": "string" }
+      },
+      "required": ["protocol", "customerName", "deliveryMethod", "paymentMethod", "items", "totalPrice", "status", "createdAt", "storeId"]
+    }
+  },
+  "firestore": {
+    "/stores/{storeId}": {
+      "schema": { "$ref": "#/entities/StoreSettings" },
+      "description": "Store settings and tenant document. Store IDs are unique slugs."
+    },
+    "/stores/{storeId}/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Products local to the given store."
+    },
+    "/stores/{storeId}/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Orders submitted to the given store."
+    }
+  }
+}
