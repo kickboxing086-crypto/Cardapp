@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Dark Mode Override for Admin Dashboard */
+.dark-mode-override {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+.dark-mode-override .bg-white {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+.dark-mode-override .bg-gray-50,
+.dark-mode-override .bg-slate-50,
+.dark-mode-override .bg-emerald-50,
+.dark-mode-override .bg-rose-50,
+.dark-mode-override .bg-orange-50 {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+.dark-mode-override .bg-gray-100,
+.dark-mode-override .bg-slate-100 {
+  background-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+.dark-mode-override .bg-emerald-100 {
+  background-color: #064e3b !important;
+  color: #34d399 !important;
+}
+
+.dark-mode-override .text-gray-900,
+.dark-mode-override .text-gray-800,
+.dark-mode-override .text-gray-750,
+.dark-mode-override .text-gray-700,
+.dark-mode-override .text-gray-600,
+.dark-mode-override .text-gray-500,
+.dark-mode-override .text-slate-900,
+.dark-mode-override .text-slate-800,
+.dark-mode-override .text-slate-700,
+.dark-mode-override .text-slate-600,
+.dark-mode-override .text-emerald-800,
+.dark-mode-override .text-rose-800 {
+  color: #e2e8f0 !important;
+}
+
+.dark-mode-override .border-gray-50,
+.dark-mode-override .border-gray-100,
+.dark-mode-override .border-gray-150,
+.dark-mode-override .border-gray-200,
+.dark-mode-override .border-slate-100,
+.dark-mode-override .border-slate-200 {
+  border-color: #334155 !important;
+}
+
+.dark-mode-override input, 
+.dark-mode-override textarea, 
+.dark-mode-override select {
+  background-color: #0f172a !important;
+  color: white !important;
+  border-color: #334155 !important;
+}
+
+/* Modals and Overlays in dark mode */
+.dark-mode-override .bg-white.shadow-2xl,
+.dark-mode-override .bg-white.shadow-xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Professional Table QR Code Printing Layout */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  /* Ensure background colors are printed */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+@media screen {
+  .print-only {
+    display: none;
+  }
+}
